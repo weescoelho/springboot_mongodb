@@ -3,7 +3,13 @@ package com.weslleycoelho.workshopmongo.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "user")
 public class User implements Serializable {
+
+  @Id
   private String id;
   private String name;
   private String email;
@@ -40,8 +46,10 @@ public class User implements Serializable {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
     User user = (User) o;
     return Objects.equals(id, user.id);
   }
